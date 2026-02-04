@@ -14,9 +14,11 @@ export default function Register() {
   console.log("Sending data:", form); 
   try {
     await API.post("/register", form);
+    alert("Registration Successful! Redirecting to login...");
     navigate("/");
   } catch (error) {
     console.error("Registration Error:", error.response.data);
+    alert("Error: " + error.response.data.msg);
   }
 };
 

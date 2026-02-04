@@ -23,9 +23,11 @@ router.post("/register", async (req, res) => {
     (err, result) => {
       if (err) {
         console.error(err); // Log the actual error to your terminal
+        //window.alert("Registration failed: " + err.message);
         return res.status(400).json(err);
       }
       res.json({ msg: "Registration successful" });
+      //window.alert("Registration successful");
     });
 });
 

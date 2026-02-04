@@ -9,9 +9,15 @@ export default function Login() {
 
   const handleLogin = async e => {
     e.preventDefault();
-    const res = await API.post("/login", { email, password });
+    try{
+      const res = await API.post("/login", { email, password });
     localStorage.setItem("token", res.data.token);
+    alert("Login Successful! Redirecting to dashboard...");
     navigate("/dashboard");
+    } catch (error) {
+    console.error("Login Error:", error.response.data);
+    alert("Error: " + error.response.data.msg);
+    }
   };
 
   return (
